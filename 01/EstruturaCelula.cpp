@@ -213,20 +213,78 @@ lista *CopiaEncadeada(lista *MinhaCelula1)
 
 	return CelulaCopia;
 }
+
 //6.Escreva uma funcao que concatene duas listas encadeadas (isto e, engate a segunda no fim da primeira).
+
+lista *ConcatenaLista(lista *MinhaCelula1, lista *MinhaCelula2)
+{
+	lista *ProximoAux;
+	
+	for (ProximoAux = MinhaCelula1; ProximoAux->prox != NULL; ProximoAux = ProximoAux->prox)
+	{
+	}
+
+	ProximoAux -> prox = MinhaCelula2;
+	
+	return MinhaCelula1;
+}
 
 //7.Escreva uma funcao que conte o numero de celulas de uma lista encadeada.
 
+int ContarCelulas(lista *MinhaCelula)
+{
+	int Cont = 1;
+	
+	for (lista *ProximoAux = MinhaCelula; ProximoAux->prox != NULL; ProximoAux = ProximoAux->prox)
+	{
+		Cont++;
+	}
+	
+	return Cont;
+}
+
 //8.Escreva uma funcao que verifique se duas listas encadeadas sao iguais, ou melhor, se tem o mesmo conteudo. Faca duas versoes: uma iterativa e uma recursiva.
+
+int ComparaListaItera(lista *MinhaCelula1, lista *MinhaCelula2)
+{
+	if (ContarCelulas(MinhaCelula1)==ContarCelulas(MinhaCelula2))
+	{
+		for(lista *ProxAux1 = MinhaCelula1, *ProxAux2 = MinhaCelula2; ProxAux1 != NULL; ProxAux1 = ProxAux1 -> prox, ProxAux2 = ProxAux2 -> prox)
+		{
+			if(ProxAux1 ->numero != ProxAux2 -> numero)
+			{
+				cout << "NÃO SÃO IGUAIS!";
+				return 0;
+			}
+			
+		}
+		
+	}
+	else{
+		cout << "SÃO DE TAMANHO DIFERENTE";
+		return 0;
+	}
+	
+	cout << "ELES SÃO IGUAIS :3 ";
+	return 1;
+}
 
 int main()
 {
-	int Vet[TAM] = {1, 2, 3, 4, 5};
+	int Vet[TAM] = {1, 2, 3, 4, 5}, Vet2[TAM] = {6, 7, 8, 9, 10};
 
 	lista *MinhaLista = CopiaVet(Vet);
-	lista *cop = CopiaEncadeada(MinhaLista);
-	imprimeLista(cop);
-
+	lista *CopiaDaLista = CopiaEncadeada(MinhaLista);
+//	imprimeLista(cop);
+	
+	//MinhaLista = ConcatenaLista(MinhaLista,CopiaDaLista);
+	
+	int QuantCelulas1 = ContarCelulas(MinhaLista); 
+	
+	ComparaListaItera(MinhaLista,CopiaDaLista);
+	//int QuantCelulas2 = ContarCelulas(CopiaDaLista);
+	//ConcatenaLista(CopiaVet(Vet),CopiaVet(Vet2));
+	
 	// lista *Node1 = NULL;
 	// lista *Node2 = NULL;
 	// lista *Node3 = NULL;

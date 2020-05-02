@@ -142,6 +142,15 @@ lista *InsereFinalLista(lista *MinhaLista, int Numero)
 //	}
 //}
 
+void imprimeLista(lista *Lista)
+{
+
+	for (lista *ListaAux = Lista; ListaAux != NULL; ListaAux = ListaAux->prox)
+	{
+		cout << ListaAux->numero << endl;
+	}
+}
+
 lista *CopiaVet(int vet[])
 {
 	//inicializa a lista como NULL
@@ -202,10 +211,6 @@ lista *CopiaEncadeada(lista *MinhaCelula1)
 		CelulaCopia = InsereFinalLista(CelulaCopia, ProximoAux->numero);
 	}
 
-	for (lista *ProximoAux = CelulaCopia; ProximoAux != NULL; ProximoAux = ProximoAux->prox)
-	{
-		cout << ProximoAux->numero << endl;
-	}
 	return CelulaCopia;
 }
 //6.Escreva uma funcao que concatene duas listas encadeadas (isto e, engate a segunda no fim da primeira).
@@ -219,7 +224,8 @@ int main()
 	int Vet[TAM] = {1, 2, 3, 4, 5};
 
 	lista *MinhaLista = CopiaVet(Vet);
-	CopiaEncadeada(MinhaLista);
+	lista *cop = CopiaEncadeada(MinhaLista);
+	imprimeLista(cop);
 
 	// lista *Node1 = NULL;
 	// lista *Node2 = NULL;

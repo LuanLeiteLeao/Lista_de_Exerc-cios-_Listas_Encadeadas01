@@ -219,13 +219,13 @@ lista *CopiaEncadeada(lista *MinhaCelula1)
 lista *ConcatenaLista(lista *MinhaCelula1, lista *MinhaCelula2)
 {
 	lista *ProximoAux;
-	
+
 	for (ProximoAux = MinhaCelula1; ProximoAux->prox != NULL; ProximoAux = ProximoAux->prox)
 	{
 	}
 
-	ProximoAux -> prox = MinhaCelula2;
-	
+	ProximoAux->prox = MinhaCelula2;
+
 	return MinhaCelula1;
 }
 
@@ -234,12 +234,12 @@ lista *ConcatenaLista(lista *MinhaCelula1, lista *MinhaCelula2)
 int ContarCelulas(lista *MinhaCelula)
 {
 	int Cont = 1;
-	
+
 	for (lista *ProximoAux = MinhaCelula; ProximoAux->prox != NULL; ProximoAux = ProximoAux->prox)
 	{
 		Cont++;
 	}
-	
+
 	return Cont;
 }
 
@@ -247,44 +247,35 @@ int ContarCelulas(lista *MinhaCelula)
 
 int ComparaListaItera(lista *MinhaCelula1, lista *MinhaCelula2)
 {
-	if (ContarCelulas(MinhaCelula1)==ContarCelulas(MinhaCelula2))
+	for (lista *ProxAux1 = MinhaCelula1, *ProxAux2 = MinhaCelula2; ProxAux1 != NULL; ProxAux1 = ProxAux1->prox, ProxAux2 = ProxAux2->prox)
 	{
-		for(lista *ProxAux1 = MinhaCelula1, *ProxAux2 = MinhaCelula2; ProxAux1 != NULL; ProxAux1 = ProxAux1 -> prox, ProxAux2 = ProxAux2 -> prox)
+		if (ProxAux1->numero != ProxAux2->numero)
 		{
-			if(ProxAux1 ->numero != ProxAux2 -> numero)
-			{
-				cout << "NÃO SÃO IGUAIS!";
-				return 0;
-			}
-			
+			cout << "NAO SAO IGUAIS!";
+			return 0;
 		}
-		
 	}
-	else{
-		cout << "SÃO DE TAMANHO DIFERENTE";
-		return 0;
-	}
-	
-	cout << "ELES SÃO IGUAIS :3 ";
+
+	cout << "ELES SAO IGUAIS :3 ";
 	return 1;
 }
 
 int main()
 {
-	int Vet[TAM] = {1, 2, 3, 4, 5}, Vet2[TAM] = {6, 7, 8, 9, 10};
+	int Vet[TAM] = {1, 2, 3, 4, 5}, Vet2[6] = {6, 7, 8, 9, 10, 11};
 
 	lista *MinhaLista = CopiaVet(Vet);
 	lista *CopiaDaLista = CopiaEncadeada(MinhaLista);
-//	imprimeLista(cop);
-	
+	//	imprimeLista(cop);
+
 	//MinhaLista = ConcatenaLista(MinhaLista,CopiaDaLista);
-	
-	int QuantCelulas1 = ContarCelulas(MinhaLista); 
-	
-	ComparaListaItera(MinhaLista,CopiaDaLista);
+
+	int QuantCelulas1 = ContarCelulas(MinhaLista);
+
+	ComparaListaItera(CopiaVet(Vet2), CopiaVet(Vet2));
 	//int QuantCelulas2 = ContarCelulas(CopiaDaLista);
 	//ConcatenaLista(CopiaVet(Vet),CopiaVet(Vet2));
-	
+
 	// lista *Node1 = NULL;
 	// lista *Node2 = NULL;
 	// lista *Node3 = NULL;

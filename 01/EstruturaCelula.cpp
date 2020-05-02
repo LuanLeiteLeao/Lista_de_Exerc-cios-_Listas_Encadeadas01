@@ -202,14 +202,12 @@ lista *CopiaEncadeadanaEncadeada(lista *MinhaCelula1, lista *MinhaCelula2)
 	{
 		MinhaCelula2 -> numero = MinhaCelula1 -> numero;
 		MinhaCelula2 -> prox = MinhaCelula2 -> prox;	
+		cout << PonteiroAux -> numero;
 	}
-	
-	
-	
 	
 	for(lista *PonteiroAux; PonteiroAux->prox!=NULL; PonteiroAux = PonteiroAux -> prox)
 	{
-		cout << PonteiroAux -> numero;
+		
 	}
 	
 	

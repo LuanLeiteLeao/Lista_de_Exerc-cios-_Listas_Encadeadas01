@@ -8,7 +8,7 @@ using namespace std;
 /*O struct criado eh uma estrutura de uma celula (TAD - Tipo abstrato de dados), 
 Como ha uma estrutura para uma lista, nela deve haver um ponteiro que aponta para o proximo,
 este ponteiro deve ser do mesmo tipo da estrutura "struct lista *prox".
-Desta forma, ela fara¡ a chamada da proxima celula.*/
+Desta forma, ela faraï¿½ a chamada da proxima celula.*/
 
 /*typedef struct - Eh uma forma de declarar um tipo, comportando um unico 
 tipo de dado no caso um inteiro (int)*/
@@ -26,13 +26,13 @@ struct lista
 /*Como parametro deve ser adicionado tanto a da struct e uma variavel ponteiro para a lista encadeada
 -Quando utilizar o for deve criar um ponteiro que ira auxiliar na passagem para o "proximo" (proximoVariavel), este por
 sua vez, recebe toda a struct em sua variavel. Tendo assim acesso ao conteudo.
--Se o "proximo" haver algum conteudo, continuara¡ no for ate encontrar o VAZIO
+-Se o "proximo" haver algum conteudo, continuaraï¿½ no for ate encontrar o VAZIO
 -Por ultimo, o proximoVariavel ira receber o proximo da struct */
 
 int buscaCelula(int NumeroProcurado, lista *ListaEncadeada)
 {
 	for (lista *proximoVariavel = ListaEncadeada; proximoVariavel != NULL; proximoVariavel = proximoVariavel->prox)
-		
+
 		if (proximoVariavel->numero == NumeroProcurado)
 		{
 			cout << "Achou! " << proximoVariavel->numero;
@@ -53,7 +53,7 @@ int buscaCelula(int NumeroProcurado, lista *ListaEncadeada)
 
 lista *NovaCelula()
 {
-	/*A variavel Celula ira receber o inteiro do espaco alocado que esta¡ incluso na struct
+	/*A variavel Celula ira receber o inteiro do espaco alocado que estaï¿½ incluso na struct
 	  A funcao malloc (o nome eh uma abreviatura de memory allocation) aloca espaco para um bloco de bytes consecutivos na memoria 
 	  RAM (= random access memory) do computador e devolve o endereco desse bloco.  
 	  O numero de bytes especificado no argumento da funcao. 
@@ -88,8 +88,7 @@ lista *InsereFinalLista(lista *MinhaLista, int Numero)
 	ela perdera o valor da variavel*/
 
 	lista *ProximoAux;
-	
-	
+
 	lista *CelulaInserir = InicialistaNovaCelula(Numero);
 
 	/*ProximoAux = MinhaLista       ---- Recebe tudo que estÃ¡ dentro da struct como parÃ¢metro
@@ -102,36 +101,36 @@ lista *InsereFinalLista(lista *MinhaLista, int Numero)
 	--------------------------------------------------------------------------------------------------------
 	  
 	  O "for" possui um ";" (ELE NAO RODA NADA EM LOOP, OBSERVE QUE NAO EXISTE CHAVE E APENAS 
-	  UM PONTO E VIRGULA, ELE POSSUI APENAS A RESPONSABILIDADE DE RODAR A LISTA E VERIFICAR SE HA ALGUM VALOR)
+	  UM PONTO E VIRGULA, ELE POSSUI APENAS A RESPONSABILIDADE DE RODAR A LISTA E VERIFICAR SE HAï¿½ ALGUM VALOR)
 	  */
-	
+
 	/*Ela compara se na lista da estrutura esta vazia, se estiver 
 	vazia ela inicializa uma vez preenchendo o primeiro espaco com o item da Celula com o numero da primeira
 	casa do vetor*/
-	
+
 	if (MinhaLista == NULL)
 	{
 		MinhaLista = CelulaInserir;
 	}
-	
+
 	/*Caso a lista ja esteja inicializada ira entrar no else*/
-	
+
 	else
-	{	
+	{
 		/*Ele roda o endereco ate encontrar o final da lista para entao inserir o valor na celula*/
-		
+
 		for (ProximoAux = MinhaLista; ProximoAux->prox != NULL; ProximoAux = ProximoAux->prox)
 		{
 			// nao faz nadaaaaaaaaaaaaaaaaa
 			// apenas roda ate o final
 		}
-		
+
 		/*Apos encontrar o ultimo valor da lista ele insere ao final a celula criada 
 		(Ele adiciona uma celula)*/
-		
+
 		ProximoAux->prox = CelulaInserir;
 	}
-	
+
 	return MinhaLista; // Se nao houver o return ele ira retornar apenas as 2 ultimas casas do vetor
 }
 
@@ -143,78 +142,73 @@ lista *InsereFinalLista(lista *MinhaLista, int Numero)
 //	}
 //}
 
-lista* CopiaVet(int vet[])
+lista *CopiaVet(int vet[])
 {
 	//inicializa a lista como NULL
 	lista *MinhaLista = NULL;
-	
+
 	for (int i = 0; i < TAM; i++)
 	{
 		MinhaLista = InsereFinalLista(MinhaLista, vet[i]);
 	}
 	//cout << "--------------------------------------------------" << endl;
 	//imprimeLista(MinhaLista);
-	
+
 	return MinhaLista;
-	
-//	cout << TamanhoLista(MinhaLista);
+
+	//	cout << TamanhoLista(MinhaLista);
 }
 
 //4.Escreva uma funcao que copie o conteudo de uma lista encadeada para um vetor preservando a ordem dos elementos.
 
 int TamanhoLista(lista *MinhaLista)
 {
-	int Contador=0;
-	
+	int Contador = 0;
+
 	for (lista *ProximoAux = MinhaLista; ProximoAux != NULL; ProximoAux = ProximoAux->prox)
 	{
 		Contador++;
 	}
-	
+
 	return Contador;
 }
 
 void CopiaLista(lista *MinhaLista)
 {
 	int TamanhoVetor = TamanhoLista(MinhaLista);
-	int Vetor[TamanhoVetor], ContadorVetor=0;
+	int Vetor[TamanhoVetor], ContadorVetor = 0;
 
 	/*Um "for" pode portar mais de um item da mesma categoria contando que tenha virgula*/
-	
-	for(lista *ProximoAux = MinhaLista; ProximoAux !=NULL; ProximoAux = ProximoAux -> prox, ContadorVetor++)
+
+	for (lista *ProximoAux = MinhaLista; ProximoAux != NULL; ProximoAux = ProximoAux->prox, ContadorVetor++)
 	{
 		/*Para passar um valor da lista para uma variavel
 		Eh necessario utilizar o auxiliar que esta apontando para a lista
 		indicando o conteudo dela, que no nosso caso eh a variavel
 		"numero" da struct*/
-		
+
 		Vetor[ContadorVetor] = ProximoAux->numero;
-		
 	}
-		
 }
 
 //5.Escreva uma funcao que faca uma copia de uma lista encadeada.
 
 lista *CopiaEncadeada(lista *MinhaCelula1)
-{	
-	lista *CelulaCopia=NULL;
-	
-	for(lista *ProximoAux=MinhaCelula1; ProximoAux->prox !=NULL; ProximoAux = ProximoAux->prox)
+{
+	lista *CelulaCopia = NULL;
+	for (lista *ProximoAux = MinhaCelula1; ProximoAux != NULL; ProximoAux = ProximoAux->prox)
 	{
-		cout << ProximoAux -> numero << endl;
-		CelulaCopia = InsereFinalLista(CelulaCopia, ProximoAux -> numero);
+		// cout << ProximoAux->numero << endl;
+		CelulaCopia = InsereFinalLista(CelulaCopia, ProximoAux->numero);
 	}
-	
-	for(lista *ProximoAux=CelulaCopia; ProximoAux !=NULL; ProximoAux = ProximoAux->prox)
+
+	for (lista *ProximoAux = CelulaCopia; ProximoAux != NULL; ProximoAux = ProximoAux->prox)
 	{
-	 	cout << ProximoAux -> numero << endl;
+		cout << ProximoAux->numero << endl;
 	}
 	return CelulaCopia;
 }
 //6.Escreva uma funcao que concatene duas listas encadeadas (isto e, engate a segunda no fim da primeira).
-
-
 
 //7.Escreva uma funcao que conte o numero de celulas de uma lista encadeada.
 
@@ -223,10 +217,10 @@ lista *CopiaEncadeada(lista *MinhaCelula1)
 int main()
 {
 	int Vet[TAM] = {1, 2, 3, 4, 5};
-		
+
 	lista *MinhaLista = CopiaVet(Vet);
-	CopiaLista(MinhaLista);
-	
+	CopiaEncadeada(MinhaLista);
+
 	// lista *Node1 = NULL;
 	// lista *Node2 = NULL;
 	// lista *Node3 = NULL;

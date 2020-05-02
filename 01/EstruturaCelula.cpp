@@ -196,21 +196,21 @@ void CopiaLista(lista *MinhaLista)
 
 //5.Escreva uma funcao que faca uma copia de uma lista encadeada.
 
-lista *CopiaEncadeadanaEncadeada(lista *MinhaCelula1, lista *MinhaCelula2)
-{
-	for(lista *ProximoAux; ProximoAux -> prox!=NULL; ProximoAux = ProximoAux -> prox)
+lista *CopiaEncadeada(lista *MinhaCelula1)
+{	
+	lista *CelulaCopia=NULL;
+	
+	for(lista *ProximoAux=MinhaCelula1; ProximoAux->prox !=NULL; ProximoAux = ProximoAux->prox)
 	{
-		MinhaCelula2 -> numero = MinhaCelula1 -> numero;
-		MinhaCelula2 -> prox = MinhaCelula2 -> prox;	
-		cout << PonteiroAux -> numero;
+		cout << ProximoAux -> numero << endl;
+		CelulaCopia = InsereFinalLista(CelulaCopia, ProximoAux -> numero);
 	}
 	
-	for(lista *PonteiroAux; PonteiroAux->prox!=NULL; PonteiroAux = PonteiroAux -> prox)
+	for(lista *ProximoAux=CelulaCopia; ProximoAux !=NULL; ProximoAux = ProximoAux->prox)
 	{
-		
+	 	cout << ProximoAux -> numero << endl;
 	}
-	
-	
+	return CelulaCopia;
 }
 //6.Escreva uma funcao que concatene duas listas encadeadas (isto e, engate a segunda no fim da primeira).
 
@@ -223,10 +223,9 @@ lista *CopiaEncadeadanaEncadeada(lista *MinhaCelula1, lista *MinhaCelula2)
 int main()
 {
 	int Vet[TAM] = {1, 2, 3, 4, 5};
-	lista *MinhaLista2 = NULL;
+		
 	lista *MinhaLista = CopiaVet(Vet);
 	CopiaLista(MinhaLista);
-	CopiaEncadeadanaEncadeada(MinhaLista,MinhaLista2);
 	
 	// lista *Node1 = NULL;
 	// lista *Node2 = NULL;
@@ -234,14 +233,14 @@ int main()
 	// lista *Node4 = NULL;
 	// lista *Node5 = NULL;
 
-	/*A variável Node1 irá receber o inteiro do espaço alocado que está incluso na struct
-	  A função malloc (o nome é uma abreviatura de memory allocation) aloca espaço para um bloco de bytes consecutivos na memória 
+	/*A variavel Node1 ira receber o inteiro do espaço alocado que estao incluso na struct
+	  A funcao malloc (o nome eh uma abreviatura de memory allocation) aloca espanco para um bloco de bytes consecutivos na memoria 
 	  RAM (= random access memory) do computador e devolve o endereço desse bloco.  
-	  O número de bytes é especificado no argumento da função. 
-	  No seguinte fragmento de código, malloc aloca 1 byte, a funca A expressão sizeof(XXXX) 
-	  retorna o número de bytes ocupado por um XXXX.
-	  (O primeiro struct entre parênteses pode representar uma conversão, como uma mensagem
-	  de que o inteiro que está sendo passado para o armazenamento dos bytes é do tipo (STRUCT LISTA*) 
+	  O numero de bytes é especificado no argumento da funcao. 
+	  No seguinte fragmento de codigo, malloc aloca 1 byte, a funca A expressao sizeof(XXXX) 
+	  retorna o numero de bytes ocupado por um XXXX.
+	  (O primeiro struct entre parenteses pode representar uma conversao, como uma mensagem
+	  de que o inteiro que esta sendo passado para o armazenamento dos bytes eh do tipo (STRUCT LISTA*) 
 	*/
 
 	// Node1 = (struct lista *)malloc(sizeof(struct lista *));
